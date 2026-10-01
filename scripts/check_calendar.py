@@ -1,8 +1,12 @@
+import sys
 from datetime import datetime
+from pathlib import Path
 
-from calendar_service import GoogleCalendarService
-from config import load_settings
-from db import init_database
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from homework_agent.calendar_service import GoogleCalendarService
+from homework_agent.config import load_settings
+from homework_agent.db import init_database
 
 
 def main() -> None:

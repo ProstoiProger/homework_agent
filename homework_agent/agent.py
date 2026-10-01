@@ -9,10 +9,10 @@ from google import genai
 from google.genai import types
 from openai import OpenAI
 
-from calendar_service import GoogleCalendarService
-from config import Settings
-from rag_service import ResourceService
-from services import DomainError, HomeworkService
+from .calendar_service import GoogleCalendarService
+from .config import Settings
+from .rag_service import ResourceService
+from .services import DomainError, HomeworkService
 
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"

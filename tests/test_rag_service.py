@@ -5,9 +5,9 @@ from tempfile import TemporaryDirectory
 
 from docx import Document
 
-from db import init_database
-from rag_service import ResourceService
-from services import DomainError
+from homework_agent.db import init_database
+from homework_agent.rag_service import ResourceService
+from homework_agent.services import DomainError
 
 
 class ResourceServiceTests(unittest.TestCase):

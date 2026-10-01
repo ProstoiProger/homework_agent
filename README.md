@@ -28,6 +28,33 @@ python-telegram-bot + APScheduler JobQueue
 
 LLM не отправляет сообщения ученикам напрямую. Он создаёт PDF через строго описанный серверный tool, а файл получает только преподаватель.
 
+## Структура проекта
+
+```text
+homework-agent/
+├── run.py                 # точка входа: python run.py запускает бота
+├── homework_agent/        # пакет с логикой
+│   ├── config.py          # загрузка .env и Settings
+│   ├── db.py               # SQLAlchemy engine/session
+│   ├── models.py          # ORM-модели
+│   ├── services.py        # бизнес-логика ДЗ/учеников/уроков
+│   ├── rag_service.py     # загрузка книг и поиск фрагментов (RAG)
+│   ├── pdf_service.py     # рендер ДЗ в PDF с формулами
+│   ├── calendar_service.py # интеграция с Google Calendar
+│   ├── agent.py            # Gemini/OpenRouter + function tools
+│   └── telegram_bot.py     # обработчики команд и сборка приложения
+├── scripts/                # вспомогательные CLI-скрипты
+│   ├── init_db.py          # создать/обновить схему БД
+│   └── check_calendar.py   # проверить подключение к календарю
+├── tests/                  # unittest-тесты
+├── credentials/            # OAuth/service-account JSON (не в git)
+├── resources/ generated_homeworks/ output/ tmp/   # runtime-данные (не в git)
+├── .env.example
+└── requirements.txt
+```
+
+Код внутри `homework_agent/` использует относительные импорты (`from .config import ...`) и ничего не знает про `scripts/` — обратная зависимость идёт только от `scripts/*.py` и `run.py` к пакету.
+
 ## 1. Подготовка
 
 Нужен Python 3.11 или новее. В каталоге проекта:
@@ -75,7 +102,7 @@ OAuth client в Google Cloud должен иметь тип **Desktop app**. Т�
 Проверь доступ и сразу синхронизируй ближайшую неделю:
 
 ```powershell
-python check_calendar.py
+python scripts\check_calendar.py
 ```
 
 При первом запуске откроется Google OAuth в браузере. Войди в аккаунт с нужным календарём и разреши read-only доступ. После успешного входа refresh token сохранится в `credentials/google-calendar-token.json`; дальше бот обновляет доступ автоматически и браузер ему не нужен.
@@ -95,8 +122,8 @@ python check_calendar.py
 ## 3. Запуск
 
 ```powershell
-python init_db.py
-python telegram_bot.py
+python scripts\init_db.py
+python run.py
 ```
 
 При старте запускается long polling и регистрируются задачи APScheduler:
@@ -176,4 +203,4 @@ HOMEWORK_DELIVERY_MODE=text
 
 ## Развёртывание
 
-На VPS достаточно одного процесса `python telegram_bot.py` и постоянной директории для `homework.db`, `.env` и OAuth token/service-account JSON. Для production запускай процесс под systemd или другим менеджером процессов и ограничь права чтения этих файлов.
+На VPS достаточно одного процесса `python run.py` и постоянной директории для `homework.db`, `.env` и OAuth token/service-account JSON. Для production запускай процесс под systemd или другим менеджером процессов и ограничь права чтения этих файлов.

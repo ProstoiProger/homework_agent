@@ -5,10 +5,10 @@ from datetime import UTC, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from db import init_database
-from models import Homework, HomeworkStatus
-from pdf_service import HomeworkPdfService
-from services import DomainError, HomeworkService
+from homework_agent.db import init_database
+from homework_agent.models import Homework, HomeworkStatus
+from homework_agent.pdf_service import HomeworkPdfService
+from homework_agent.services import DomainError, HomeworkService
 
 
 class FakeBot:

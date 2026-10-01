@@ -8,9 +8,9 @@ from zoneinfo import ZoneInfo
 from sqlalchemy import select, update
 from sqlalchemy.orm import selectinload
 
-from db import Database
-from models import Homework, HomeworkStatus, Lesson, LessonStatus, Student, StudentAlias
-from pdf_service import HomeworkPdfService
+from .db import Database
+from .models import Homework, HomeworkStatus, Lesson, LessonStatus, Student, StudentAlias
+from .pdf_service import HomeworkPdfService
 
 
 class DomainError(Exception):

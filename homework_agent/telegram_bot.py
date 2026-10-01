@@ -14,14 +14,14 @@ from telegram.ext import (
     filters,
 )
 
-from agent import TeacherAgent
-from calendar_service import GoogleCalendarService
-from config import Settings, load_settings
-from db import init_database
-from models import HomeworkStatus
-from pdf_service import HomeworkPdfService
-from rag_service import ResourceService, SUPPORTED_EXTENSIONS
-from services import DomainError, HomeworkService
+from .agent import TeacherAgent
+from .calendar_service import GoogleCalendarService
+from .config import Settings, load_settings
+from .db import init_database
+from .models import HomeworkStatus
+from .pdf_service import HomeworkPdfService
+from .rag_service import ResourceService, SUPPORTED_EXTENSIONS
+from .services import DomainError, HomeworkService
 
 
 logging.basicConfig(

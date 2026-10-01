@@ -12,9 +12,9 @@ from docx import Document
 from pypdf import PdfReader
 from sqlalchemy import select
 
-from db import Database
-from models import ResourceChunk, ResourceDocument
-from services import DomainError
+from .db import Database
+from .models import ResourceChunk, ResourceDocument
+from .services import DomainError
 
 
 SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".txt", ".md"}

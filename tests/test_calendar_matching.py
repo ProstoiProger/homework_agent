@@ -4,10 +4,10 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from zoneinfo import ZoneInfo
 
-from calendar_service import GoogleCalendarService, match_student, normalize
-from db import Database, init_database
-from models import Lesson, Student, StudentAlias
-from services import DomainError, HomeworkService
+from homework_agent.calendar_service import GoogleCalendarService, match_student, normalize
+from homework_agent.db import Database, init_database
+from homework_agent.models import Lesson, Student, StudentAlias
+from homework_agent.services import DomainError, HomeworkService
 
 
 class CalendarMatchingTests(unittest.TestCase):

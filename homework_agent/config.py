@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 from dotenv import load_dotenv
 
 
-PROJECT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = Path(__file__).resolve().parent.parent
 
 
 @dataclass(frozen=True)

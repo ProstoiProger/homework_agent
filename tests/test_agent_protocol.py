@@ -2,7 +2,7 @@ import unittest
 
 from google.genai import types
 
-from agent import TOOL_DECLARATIONS, TeacherAgent
+from homework_agent.agent import TOOL_DECLARATIONS, TeacherAgent
 
 
 class AgentProtocolTests(unittest.TestCase):

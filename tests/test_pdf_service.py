@@ -4,7 +4,7 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
-from pdf_service import HomeworkPdfService
+from homework_agent.pdf_service import HomeworkPdfService
 
 
 class HomeworkPdfServiceTests(unittest.TestCase):

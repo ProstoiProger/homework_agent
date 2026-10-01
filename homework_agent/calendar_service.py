@@ -13,9 +13,9 @@ from googleapiclient.discovery import build
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
-from db import Database
-from models import CalendarEvent, CalendarEventStatus, Lesson, LessonStatus, Student
-from services import DomainError, utc_now
+from .db import Database
+from .models import CalendarEvent, CalendarEventStatus, Lesson, LessonStatus, Student
+from .services import DomainError, utc_now
 
 
 SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"]
