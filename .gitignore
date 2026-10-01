@@ -1,0 +1,64 @@
+# --- Secrets / local configuration ---
+.env
+.env.*
+!.env.example
+
+# Google OAuth / service-account credentials and tokens
+credentials/*
+!credentials/.gitkeep
+token.json
+*.token.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Databases / backups ---
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+homework.db
+*.bak
+
+# --- Generated runtime content (teacher-specific, not for the repo) ---
+resources/*
+!resources/.gitkeep
+generated_homeworks/*
+!generated_homeworks/.gitkeep
+output/*
+!output/.gitkeep
+tmp/*
+!tmp/.gitkeep
+
+# Cached rendered math/formula images
+.formula-cache/
+
+# --- Logs ---
+*.log
+
+# --- IDE / editor ---
+.idea/
+.vscode/
+*.iml
+
+# --- OS junk ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
